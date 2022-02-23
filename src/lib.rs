@@ -68,14 +68,13 @@ use bevy::{
     log,
     prelude::{AssetEvent, Assets, Commands, EventReader, ResMut},
     render::{render_graph::RenderGraph, texture::Image, RenderApp, RenderStage},
-    utils::HashMap,
+    utils::{hashbrown::hash_map::Entry, HashMap},
     window::WindowId,
 };
 #[cfg(all(feature = "manage_clipboard", not(target_arch = "wasm32")))]
 use clipboard::{ClipboardContext, ClipboardProvider};
 #[cfg(all(feature = "manage_clipboard", not(target_arch = "wasm32")))]
 use std::cell::{RefCell, RefMut};
-use std::collections::hash_map::Entry;
 #[cfg(all(feature = "manage_clipboard", not(target_arch = "wasm32")))]
 use thread_local::ThreadLocal;
 
