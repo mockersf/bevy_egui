@@ -12,6 +12,7 @@ use bevy::{
         mouse::{MouseButton, MouseButtonInput, MouseScrollUnit, MouseWheel},
         ElementState, Input,
     },
+    prelude::NonSend,
     utils::HashMap,
     window::{
         CursorEntered, CursorLeft, CursorMoved, ReceivedCharacter, WindowCreated, WindowFocused,
@@ -338,7 +339,7 @@ pub fn process_output(
     mut egui_output: ResMut<HashMap<WindowId, EguiOutput>>,
     mut egui_shapes: ResMut<HashMap<WindowId, EguiShapes>>,
     #[cfg(feature = "manage_clipboard")] mut egui_clipboard: ResMut<crate::EguiClipboard>,
-    winit_windows: Option<Res<WinitWindows>>,
+    winit_windows: Option<NonSend<WinitWindows>>,
 ) {
     let window_ids: Vec<_> = egui_context.ctx.keys().copied().collect();
     for window_id in window_ids {
