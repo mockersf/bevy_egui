@@ -4,8 +4,8 @@ use crate::{EguiContext, EguiInput, EguiOutput, EguiSettings, EguiShapes, Window
 #[cfg(feature = "open_url")]
 use bevy::log;
 use bevy::{
-    app::EventReader,
     core::Time,
+    ecs::event::EventReader,
     ecs::system::{Local, Res, ResMut, SystemParam},
     input::{
         keyboard::{KeyCode, KeyboardInput},
