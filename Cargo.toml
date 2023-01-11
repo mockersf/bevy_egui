@@ -21,7 +21,7 @@ open_url = ["webbrowser"]
 default_fonts = ["egui/default_fonts"]
 
 [dependencies]
-bevy = { version = "0.9.0", default-features = false, features = ["bevy_render", "bevy_core_pipeline", "bevy_asset"] }
+bevy = { version = "0.9.0", default-features = false, features = ["bevy_render", "bevy_core_pipeline", "bevy_asset", "bevy_ui"] }
 egui = { version = "0.20.0", default-features = false, features = ["bytemuck"] }
 webbrowser = { version = "0.8.2", optional = true }
 

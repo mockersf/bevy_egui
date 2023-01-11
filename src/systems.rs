@@ -21,7 +21,6 @@ use bevy::{
         WindowFocused, WindowId, Windows,
     },
 };
-use std::marker::PhantomData;
 
 #[allow(missing_docs)]
 #[derive(SystemParam)]
@@ -54,13 +53,11 @@ impl<'w, 's> InputEvents<'w, 's> {
 
 #[allow(missing_docs)]
 #[derive(SystemParam)]
-pub struct InputResources<'w, 's> {
+pub struct InputResources<'w> {
     #[cfg(feature = "manage_clipboard")]
     pub egui_clipboard: Res<'w, crate::EguiClipboard>,
     pub keyboard_input: Res<'w, Input<KeyCode>>,
     pub egui_input: ResMut<'w, EguiRenderInputContainer>,
-    #[system_param(ignore)]
-    _marker: PhantomData<&'s ()>,
 }
 
 #[allow(missing_docs)]
@@ -69,8 +66,6 @@ pub struct WindowResources<'w, 's> {
     pub focused_window: Local<'s, Option<WindowId>>,
     pub windows: ResMut<'w, Windows>,
     pub window_sizes: ResMut<'w, EguiWindowSizeContainer>,
-    #[system_param(ignore)]
-    _marker: PhantomData<&'s ()>,
 }
 
 /// Initialises Egui contexts (for multiple windows) on startup.
@@ -358,11 +353,9 @@ pub fn begin_frame_system(
 
 #[allow(missing_docs)]
 #[derive(SystemParam)]
-pub struct OutputResources<'w, 's> {
+pub struct OutputResources<'w> {
     pub egui: ResMut<'w, EguiOutputContainer>,
     pub egui_render: ResMut<'w, EguiRenderOutputContainer>,
-    #[system_param(ignore)]
-    _marker: PhantomData<&'s ()>,
 }
 
 /// Reads Egui output.
